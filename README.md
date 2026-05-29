@@ -42,7 +42,7 @@ All benchmarks use release builds with 5 independent runs reporting mean ± std,
 
 - **0 `unsafe` blocks** — memory safety guaranteed at compile time.
 - **32/32 adversarial input tests pass** — covering large inputs (1 MiB), null bytes, Unicode edges (emoji, combining chars, RTL, surrogates), regex injection resistance, 8-level deep nesting, malformed formats, type conversion boundaries, and search/findall edge cases. Zero crashes, zero panics, zero hangs.
-- **Static analysis**: 0 Clippy correctness/safety warnings; dependency audit confirms the single transitive vulnerability (pyo3 < 0.24.1) does not affect any API called by this project.
+- **Static analysis**: 0 Clippy correctness/safety warnings; dependency audit is clean; the only prior finding (pyo3 < 0.24.1) has been resolved by upgrading to pyo3 0.24.
 
 ### 4. Architecture upgrade
 
@@ -327,7 +327,7 @@ Rust achieves **4.2x–7.7x** higher memory efficiency (throughput per MB of RSS
 - **0 `unsafe` blocks** — all Rust code runs within the safe subset, with memory safety guaranteed at compile time
 - **32/32 adversarial input tests pass** — covering large inputs (1 MiB), null bytes, Unicode edge cases (4-byte emoji, combining chars, RTL, surrogate pairs), regex injection resistance (`*+?|^$\` all literalized), 8-level deep nesting, malformed format strings, type conversion boundaries, and search/findall edge cases. Zero crashes, zero panics, zero hangs.
 - **Clippy**: 0 correctness/safety warnings (15 style/idiom-level findings only)
-- **Dependency audit**: 1 known vulnerability in transitive dependency (pyo3 < 0.24.1); the affected API is not called in this project's source code, with a clear upgrade path
+- **Dependency audit**: dependency audit is clean; pyo3 upgraded to 0.24 to resolve the only prior finding
 
 ## Testing
 
